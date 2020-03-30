@@ -1,9 +1,45 @@
-<h1>{{ question.question_text }}</h1>
+<!DOCTYPE html>
+<head>
+  <title> poll application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  {% load static %}
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+</head>
+<body>
+  <div class="jumbotron text-center">
+    <h1> Poll Application</h1>
+    <p> A site that lets people view polls and vote in them.</p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    </div>
+    <div class="col-sm-6">
+      <h1>{{ question.question_text }}</h1>
+
+      <ul>
+	{% for choice in question.choice_set.all %}
+	<li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+	{% endfor %}
+      </ul>
+      
+      <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
