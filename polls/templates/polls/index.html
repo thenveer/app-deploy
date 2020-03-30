@@ -1,13 +1,46 @@
-{% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+<!DOCTYPE html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  {% load static %}
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+</head>
+<body>
+  <div class="jumbotron text-center">
+    <h1>Invoices</h1>
+    <p> This is the invoice program from Lycaeum.</p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      {% if latest_question_list %}
+      <ul>
+	{% for question in latest_question_list %}
+	<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li
+											     {% endfor %}
+											     </ul>
+      {% else %}
+      <p>No polls are available.</p>
+      {% endif %}
+
+    </div>
+    <div class="col-sm-4">
+    
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
